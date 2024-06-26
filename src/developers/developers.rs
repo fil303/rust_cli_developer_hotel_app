@@ -4,6 +4,8 @@ use clearscreen::ClearScreen;
 use rand::{thread_rng, Rng};
 
 use crate::menus::menus as Menu;
+
+#[derive(Debug)]
 pub struct Developer{
     id  : i16,
     name: String,

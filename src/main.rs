@@ -1,3 +1,6 @@
+
+
+
 mod developers;
 mod hotels;
 mod menus;
@@ -11,8 +14,9 @@ use std::io;
 fn main() {
     let input     : io::Stdin = io::stdin();
     let developers: Vec<Developer::Developer> = Developer::generate_developers();
-    
-    loop{
+    let hotels    : Vec<Hotel::Hotel> = Hotel::generate_hotels();
+
+    loop{break;
         ClearScreen::default().clear().expect("failed to clear the screen");
         let mut menu_number: String = String::new();
         println!("{}", Menu::MAIN_MENU);
