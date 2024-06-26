@@ -1,6 +1,12 @@
 use std::io;
 use clearscreen::ClearScreen;
 use crate::menus::menus as Menu;
+pub struct Developer{
+    id  : i16,
+    name: String,
+    age : u8,
+    location: String,
+}
 
 pub fn menus(input: &io::Stdin){
   loop{

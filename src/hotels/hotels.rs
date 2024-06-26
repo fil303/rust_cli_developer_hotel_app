@@ -2,6 +2,14 @@ use std::io;
 use clearscreen::ClearScreen;
 use crate::menus::menus as Menu;
 
+pub struct Hotel{
+    id      : i16,
+    name    : String,
+    capacity: u8,
+    range   : i32, 
+    location: String,
+}
+
 pub fn menus(input: &io::Stdin){
   loop{
     ClearScreen::default().clear().expect("failed to clear the screen");
