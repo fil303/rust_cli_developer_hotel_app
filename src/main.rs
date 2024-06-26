@@ -2,7 +2,8 @@ mod developers;
 mod hotels;
 mod menus;
 
-// use developers::developers as Developer;
+use clearscreen::ClearScreen;
+use developers::developers as Developer;
 // use hotels::hotels as Hotel;
 use menus::menus as Menu;
 use std::io;
@@ -11,6 +12,7 @@ fn main() {
     let input: io::Stdin = io::stdin();
     
     loop{
+        ClearScreen::default().clear().expect("failed to clear the screen");
         let mut menu_number: String = String::new();
         println!("{}", Menu::MAIN_MENU);
         let _ = input.read_line(&mut menu_number);
@@ -26,6 +28,10 @@ fn main() {
         if menu_number == 3 {
             println!("Exited successfully");
             break;
+        }
+        // Developer list here
+        if menu_number == 1 {
+            Developer::menus(&input);
         }
     }
     // Developer::greet("Israfil");
