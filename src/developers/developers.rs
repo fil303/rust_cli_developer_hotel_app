@@ -20,7 +20,3 @@ pub fn menus(input: &io::Stdin){
 
   }
 }
-
-pub fn greet(name: &str) {
-  println!("Hello, {}!", name);
-}

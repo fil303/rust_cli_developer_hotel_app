@@ -4,7 +4,7 @@ mod menus;
 
 use clearscreen::ClearScreen;
 use developers::developers as Developer;
-// use hotels::hotels as Hotel;
+use hotels::hotels as Hotel;
 use menus::menus as Menu;
 use std::io;
 
@@ -32,6 +32,10 @@ fn main() {
         // Developer list here
         if menu_number == 1 {
             Developer::menus(&input);
+        }
+        // Hotel list here
+        if menu_number == 2 {
+            Hotel::menus(&input);
         }
     }
     // Developer::greet("Israfil");
