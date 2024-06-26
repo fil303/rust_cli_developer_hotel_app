@@ -9,7 +9,8 @@ use menus::menus as Menu;
 use std::io;
 
 fn main() {
-    let input: io::Stdin = io::stdin();
+    let input     : io::Stdin = io::stdin();
+    let developers: Vec<Developer::Developer> = Developer::generate_developers();
     
     loop{
         ClearScreen::default().clear().expect("failed to clear the screen");
