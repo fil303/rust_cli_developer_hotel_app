@@ -38,7 +38,4 @@ fn main() {
             Hotel::menus(&input);
         }
     }
-    // Developer::greet("Israfil");
-    // Hotel::greet("Israfil");
-    
 }
