@@ -16,7 +16,7 @@ fn main() {
     let developers: Vec<Developer::Developer> = Developer::generate_developers();
     let hotels    : Vec<Hotel::Hotel> = Hotel::generate_hotels();
 
-    loop{break;
+    loop{
         ClearScreen::default().clear().expect("failed to clear the screen");
         let mut menu_number: String = String::new();
         println!("{}", Menu::MAIN_MENU);
