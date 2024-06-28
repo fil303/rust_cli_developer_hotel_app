@@ -1,6 +1,3 @@
-
-
-
 mod developers;
 mod hotels;
 mod menus;
@@ -12,9 +9,9 @@ use menus::menus as Menu;
 use std::io;
 
 fn main() {
-    let input     : io::Stdin = io::stdin();
-    let developers: Vec<Developer::Developer> = Developer::generate_developers();
-    let hotels    : Vec<Hotel::Hotel> = Hotel::generate_hotels();
+    let input         : io::Stdin = io::stdin();
+    let mut developers: Vec<Developer::Developer> = Developer::generate_developers();
+    let mut hotels    : Vec<Hotel::Hotel> = Hotel::generate_hotels();
 
     loop{
         ClearScreen::default().clear().expect("failed to clear the screen");
@@ -36,6 +33,7 @@ fn main() {
         }
         // Developer list here
         if menu_number == 1 {
+            Developer::developerStore(&mut developers);
             Developer::menus(&input);
         }
         // Hotel list here

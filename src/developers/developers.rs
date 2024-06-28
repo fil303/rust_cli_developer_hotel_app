@@ -1,4 +1,4 @@
-use std::io;
+use std::{io, ptr::null};
 use Default;
 use clearscreen::ClearScreen;
 use rand::{thread_rng, Rng};
@@ -13,7 +13,8 @@ pub struct Developer{
     location: String,
 }
 
-static mut developerData: Option<&'static mut Vec<Developer>> = None;
+static dummyDeveloper: Vec<Developer> = Vec::new();
+static developerData: &mut Vec<Developer> = &dummyDeveloper;
 
 pub fn menus(input: &io::Stdin){
   loop{
@@ -32,30 +33,27 @@ pub fn menus(input: &io::Stdin){
     }
     
     if menu_number == 1 {
-      unsafe{
-        listOfDeveloper();
-      }
+      listOfDeveloper();
     }
 
   }
 }
 
-pub fn developerStore(developer: &'static mut Vec<Developer>)
+pub fn developerStore(developer: &mut Vec<Developer>)
 {
   unsafe{
-    developerData = Some(developer)
+    developerData = developer
   }
 }
 
 fn listOfDeveloper()
 {
-
   unsafe{
-    developerData.map(|d| println!("{:?}", d));
+    let developerLen: usize = developerData.len();
+    for index in 0..developerLen{
+        println!("{:?}", developerData[index]);
+    }
   }
-  // for developers in developerData{
-  //     println!("{:?}", developer);
-  // }
   true;
 }
 
