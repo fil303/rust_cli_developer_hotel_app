@@ -13,6 +13,8 @@ pub struct Developer{
     location: String,
 }
 
+static mut developerData: Option<&'static mut Vec<Developer>> = None;
+
 pub fn menus(input: &io::Stdin){
   loop{
     ClearScreen::default().clear().expect("failed to clear the screen");
@@ -28,8 +30,33 @@ pub fn menus(input: &io::Stdin){
     if menu_number == 3 {
       break;
     }
+    
+    if menu_number == 1 {
+      unsafe{
+        listOfDeveloper();
+      }
+    }
 
   }
+}
+
+pub fn developerStore(developer: &'static mut Vec<Developer>)
+{
+  unsafe{
+    developerData = Some(developer)
+  }
+}
+
+fn listOfDeveloper()
+{
+
+  unsafe{
+    developerData.map(|d| println!("{:?}", d));
+  }
+  // for developers in developerData{
+  //     println!("{:?}", developer);
+  // }
+  true;
 }
 
 pub fn generate_developers() -> Vec<Developer> {
