@@ -33,7 +33,7 @@ fn main() {
         }
         // Developer list here
         if menu_number == 1 {
-            Developer::developerStore(&mut developers);
+            Developer::developerStore(&developers);
             Developer::menus(&input);
         }
         // Hotel list here
