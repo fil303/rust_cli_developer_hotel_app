@@ -13,7 +13,7 @@ pub struct Developer{
     location: String,
 }
 
-static mut developerData: Option<&'static Vec<Developer>> = None;
+static mut DEVELOPER_DATA: &Vec<Developer> = &Vec::new();
 
 pub fn menus(input: &io::Stdin){
   loop{
@@ -41,16 +41,17 @@ pub fn menus(input: &io::Stdin){
 pub fn developerStore(developer: &Vec<Developer>)
 {
   unsafe{
-    developerData = Some(developer)
+    DEVELOPER_DATA = developer
   }
 }
 
 fn listOfDeveloper()
 {
   unsafe{
-    let developerLen: usize = developerData.unwrap().len();
+    let d = DEVELOPER_DATA;
+    let developerLen: usize = DEVELOPER_DATA.len();
     for index in 0..developerLen{
-        println!("{:?}", developerData.unwrap()[index]);
+        println!("{:?}", DEVELOPER_DATA[index]);
     }
   }
   true;
