@@ -2,6 +2,7 @@ use std::{io, ptr::null};
 use Default;
 use clearscreen::ClearScreen;
 use rand::{thread_rng, Rng};
+use lazy_static::lazy_static;
 
 use crate::menus::menus as Menu;
 
@@ -13,7 +14,9 @@ pub struct Developer{
     location: String,
 }
 
-static mut DEVELOPER_DATA: &Vec<Developer> = &Vec::new();
+lazy_static! {
+  pub static ref DEVELOPER_DATA: Vec<Developer> = Vec::new();
+}
 
 pub fn menus(input: &io::Stdin){
   loop{
@@ -41,14 +44,15 @@ pub fn menus(input: &io::Stdin){
 pub fn developerStore(developer: &Vec<Developer>)
 {
   unsafe{
-    DEVELOPER_DATA = developer
+    for index in 0..developer.len() {
+      DEVELOPER_DATA.push(developer[index]);
+    }
   }
 }
 
 fn listOfDeveloper()
 {
   unsafe{
-    let d = DEVELOPER_DATA;
     let developerLen: usize = DEVELOPER_DATA.len();
     for index in 0..developerLen{
         println!("{:?}", DEVELOPER_DATA[index]);
